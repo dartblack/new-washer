@@ -1,0 +1,33 @@
+{
+  "construct": {
+    "X_WIDTH": 300,
+    "Y_WIDTH": 900,
+    "START_LINE": 70,
+    "FIRST_LASER_SENSOR": 362
+  },
+  "main_motor": {
+    "DIR_PIN": "12",
+    "PL_PIN": "13",
+    "PULSE_DELAY": 0.0001,
+    "SM_PULSE": 1000
+  },
+  "side_motor": {
+    "DIR_PIN": "12",
+    "PL_PIN": "13",
+    "PULSE_DELAY": 0.0001,
+    "SM_PULSE": 1000
+  },
+  "round_motor": {
+    "DIR_PIN": "12",
+    "PL_PIN": "13",
+    "PULSE_DELAY": 0.0001,
+    "SM_PULSE": 1000,
+    "RADIUS": 40
+  },
+  "sensors": {
+    "TRIG_PIN": "12",
+    "LEFT_ECHO": "45",
+    "RIGHT_ECHO": "39",
+    "LASER_DISTANCE": 30
+  }
+}
