@@ -7,6 +7,7 @@
   },
   "main_motor": {
     "DIR_PIN": "12",
+    "DIR_PIN2": "13",
     "PL_PIN": "13",
     "PULSE_DELAY": 0.0001,
     "SM_PULSE": 1000

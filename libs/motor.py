@@ -7,6 +7,7 @@ class Motor(ConfigLoader):
     motor_config = None
     DR = None
     PL = None
+    DR2 = None
     debug = False
 
     def __init__(self):
@@ -18,6 +19,8 @@ class Motor(ConfigLoader):
             raise ValueError(name + " config is empty")
         self.DR = DigitalOutputDevice(self.motor_config["DIR_PIN"])
         self.PL = DigitalOutputDevice(self.motor_config["PL_PIN"])
+        if "DIR_PIN" in self.motor_config:
+            self.DR2 = DigitalOutputDevice(self.motor_config["DIR_PIN"])
 
     def set_debug(self, debug: bool):
         self.debug = debug
@@ -25,8 +28,12 @@ class Motor(ConfigLoader):
     def direction(self, dir):
         if dir == 1:
             self.DR.on()
+            if self.DR2 is not None:
+                self.DR2.off()
         elif dir == 2:
             self.DR.off()
+            if self.DR2 is not None:
+                self.DR2.on()
 
     def move(self, delay=None):
         if delay is None:
