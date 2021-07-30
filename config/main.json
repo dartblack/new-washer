@@ -13,15 +13,15 @@
     "SM_PULSE": 1000
   },
   "side_motor": {
-    "DIR_PIN": "1",
-    "PL_PIN": "2",
-    "PULSE_DELAY": 0.0001,
+    "DIR_PIN": "21",
+    "PL_PIN": "20",
+    "PULSE_DELAY": 0.001,
     "SM_PULSE": 1000
   },
   "round_motor": {
-    "DIR_PIN": "3",
-    "PL_PIN": "4",
-    "PULSE_DELAY": 0.0001,
+    "DIR_PIN": "16",
+    "PL_PIN": "12",
+    "PULSE_DELAY": 0.001,
     "SM_PULSE": 1000,
     "RADIUS": 40
   },

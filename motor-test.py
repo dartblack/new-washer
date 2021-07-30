@@ -1,6 +1,6 @@
 from libs.motor import Motor
 
 motor = Motor()
-motor.init_motor("main_motor")
+motor.init_motor("side_motor")
 motor.set_debug(True)
-motor.control(2, 30000, 0.001)
+motor.control(2, 1000, 0.001)
