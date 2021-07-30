@@ -42,10 +42,20 @@ class Sensor(ConfigLoader):
         return round(TimeElapsed * 17150, 2)
 
     def get_left_distance(self):
-        return self.get_distance(self.left_echo)
+        value = 0
+        for i in range(0, 10):
+            temp = self.get_distance(self.left_echo)
+            if temp > value:
+                value = temp
+        return value
 
     def get_right_distance(self):
-        return self.get_distance(self.right_echo)
+        value = 0
+        for i in range(0, 10):
+            temp = self.get_distance(self.right_echo)
+            if temp > value:
+                value = temp
+        return value
 
     def lasers_info(self):
         data = self.get_laser_info()
