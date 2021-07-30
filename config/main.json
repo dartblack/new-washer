@@ -27,7 +27,7 @@
   },
   "sensors": {
     "TRIG_PIN": "8",
-    "LEFT_ECHO": "6",
+    "LEFT_ECHO": "10",
     "RIGHT_ECHO": "7",
     "LASER_DISTANCE": 30
   }
