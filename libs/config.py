@@ -9,7 +9,7 @@ class ConfigLoader:
         self.data = json.load(f)
         f.close()
 
-    def get(self, key: str, default=None):
+    def get(self, key, default=None):
         if key in self.data:
             return self.data[key]
         else:
