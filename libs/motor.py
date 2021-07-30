@@ -13,7 +13,7 @@ class Motor(ConfigLoader):
     def __init__(self):
         ConfigLoader.__init__(self)
 
-    def init_motor(self, name: str):
+    def init_motor(self, name):
         self.motor_config = self.get(name)
         if self.motor_config is None:
             raise ValueError(name + " config is empty")
