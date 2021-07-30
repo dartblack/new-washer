@@ -22,7 +22,7 @@ class Motor(ConfigLoader):
         if "DIR_PIN" in self.motor_config:
             self.DR2 = DigitalOutputDevice(self.motor_config["DIR_PIN"])
 
-    def set_debug(self, debug: bool):
+    def set_debug(self, debug):
         self.debug = debug
 
     def direction(self, dir):

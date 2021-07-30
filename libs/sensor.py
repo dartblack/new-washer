@@ -26,7 +26,7 @@ class Sensor(ConfigLoader):
         self.left_echo = DigitalInputDevice(self.data["LEFT_ECHO"])
         self.right_echo = DigitalInputDevice(self.data["RIGHT_ECHO"])
 
-    def get_distance(self, echo: DigitalInputDevice):
+    def get_distance(self, echo):
         startTime = 0
         endTime = 0
         self.trig.on()
