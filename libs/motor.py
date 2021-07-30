@@ -19,8 +19,8 @@ class Motor(ConfigLoader):
             raise ValueError(name + " config is empty")
         self.DR = DigitalOutputDevice(self.motor_config["DIR_PIN"])
         self.PL = DigitalOutputDevice(self.motor_config["PL_PIN"])
-        if "DIR_PIN" in self.motor_config:
-            self.DR2 = DigitalOutputDevice(self.motor_config["DIR_PIN"])
+        if "DIR_PIN2" in self.motor_config:
+            self.DR2 = DigitalOutputDevice(self.motor_config["DIR_PIN2"])
 
     def set_debug(self, debug):
         self.debug = debug
