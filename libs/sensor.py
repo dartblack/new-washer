@@ -16,7 +16,6 @@ class Sensor(ConfigLoader):
 
     def __init__(self):
         ConfigLoader.__init__(self)
-        self.port = serial.Serial("/dev/rfcomm0", baudrate=9600)
 
     def init_sensors(self):
         self.data = self.get("sensors")
@@ -58,7 +57,11 @@ class Sensor(ConfigLoader):
         return value
 
     def lasers_info(self):
+        self.port = serial.Serial("/dev/rfcomm0", baudrate=9600)
+        if not self.port.is_open:
+            self.port.open()
         data = self.get_laser_info()
+        self.port.close()
         return json.loads(data)
 
     def get_laser_info(self):
@@ -66,3 +69,19 @@ class Sensor(ConfigLoader):
             rcv = self.port.readall()
             if rcv:
                 return rcv
+
+    def get_TFmini_data(self):
+        self.port = serial.Serial("/dev/ttyS0", 115200)
+        if not self.port.is_open:
+            self.port.open()
+        while True:
+            count = self.port.in_waiting
+            if count > 8:
+                recv = self.port.read(9)
+                self.port.reset_input_buffer()
+                if recv[0] == 'Y' and recv[1] == 'Y':  # 0x59 is 'Y'
+                    low = int(recv[2].encode('hex'), 16)
+                    high = int(recv[3].encode('hex'), 16)
+                    distance = low + high * 256
+                    self.port.close()
+                    return distance
