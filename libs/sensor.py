@@ -60,15 +60,11 @@ class Sensor(ConfigLoader):
         self.port = serial.Serial("/dev/rfcomm0", baudrate=9600)
         if not self.port.is_open:
             self.port.open()
-        data = self.get_laser_info()
-        self.port.close()
-        return json.loads(data)
-
-    def get_laser_info(self):
         while True:
-            rcv = self.port.readall()
-            if rcv:
-                return rcv
+            data = self.port.readline()
+            if data:
+                self.port.close()
+                return json.loads(data.decode())
 
     def get_TFmini_data(self):
         self.port = serial.Serial("/dev/ttyS0", 115200)
