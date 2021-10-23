@@ -40,7 +40,6 @@ class Motor(ConfigLoader):
             delay = self.motor_config["PULSE_DELAY"]
 
         self.PL.on()
-        sleep(delay)
         self.PL.off()
         sleep(delay)
 
