@@ -67,7 +67,7 @@ class Sensor(ConfigLoader):
                 return json.loads(data.decode())
 
     def get_TFmini_data(self):
-        self.port = serial.Serial("/dev/ttyS0", 115200)
+        self.port = serial.Serial("/dev/tty", 115200)
         if not self.port.is_open:
             self.port.open()
         while True:
