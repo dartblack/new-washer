@@ -27,9 +27,9 @@
     "RADIUS": 40
   },
   "sensors": {
-    "TRIG_PIN": "8",
-    "LEFT_ECHO": "10",
-    "RIGHT_ECHO": "7",
+    "TRIG_PIN": "4",
+    "LEFT_ECHO": "17",
+    "RIGHT_ECHO": "18",
     "LASER_DISTANCE": 30
   }
 }

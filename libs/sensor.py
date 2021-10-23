@@ -62,7 +62,6 @@ class Sensor(ConfigLoader):
         return json.loads(data)
 
     def get_laser_info(self):
-        while True:
-            rcv = self.port.readall()
-            if rcv:
-                return rcv
+        rcv = self.port.readline().decode()
+        if rcv:
+            return rcv

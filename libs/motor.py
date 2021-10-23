@@ -52,5 +52,6 @@ class Motor(ConfigLoader):
         for i in range(duration):
             self.move(delay)
             count = count + 1
+        self.PL.off()
         if self.debug:
             print("PULSE COUNT:" + str(count))
