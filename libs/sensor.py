@@ -72,6 +72,7 @@ class Sensor(ConfigLoader):
             self.port.open()
         distance = 0
         count = self.port.in_waiting
+        print(count)
         if count > 8:
             recv = self.port.read(9)
             self.port.reset_input_buffer()
