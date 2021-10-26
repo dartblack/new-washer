@@ -5,5 +5,4 @@ from libs.tof import Tof
 # print(sensor.get_TFmini_data())
 
 sensor = Tof()
-sensor.init_sensors()
-sensor.read_data()
+sensor.read_version()
