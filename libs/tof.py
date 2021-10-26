@@ -9,5 +9,5 @@ class Tof:
 
     def read_version(self):
         self.buss.write_block_data(self.address, 0, [0xF5, 0x43, 0x00, 0x00, 0x00, 0x00, 0xAC, 0x45, 0x62, 0x3B])
-        sleep(5)
+        sleep(50)
         print(self.buss.read_block_data(self.address, 0))
