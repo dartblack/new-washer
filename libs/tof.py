@@ -8,7 +8,9 @@ class Tof:
         self.buss = smbus2.SMBus(1)
 
     def read_version(self):
-        self.buss.write_block_data(self.address, 0x00, [0x43, 0x00, 0x00, 0x00, 0x00, 0xAC, 0x45, 0x62, 0x3B])
+        paket = [0x00, 0x43, 0x00, 0x00, 0x00, 0x00, 0xAC, 0x45, 0x62, 0x3B]
+        for byte in paket:
+            self.buss.write_byte(self.address, byte)
         sleep(0.2)
-        print(self.buss.read_block_data(self.address, 0x00))
+        print(self.buss.read_block_data(self.address, 0))
         list().insert(0, 0x00)
