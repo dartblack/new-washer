@@ -9,6 +9,7 @@ class Tof:
 
     def read_version(self):
         paket = [0x43, 0x00, 0x00, 0x00, 0x00, 0xAC, 0x45, 0x62, 0x3B]
-        self.buss.write_block_data(self.address, 0xF5, paket)
+        for i in paket:
+            self.buss.write_byte_data(self.address, 0xF5, i)
         sleep(0.2)
         print(self.buss.read_block_data(self.address, 0xFA))
