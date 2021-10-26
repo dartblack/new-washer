@@ -1,4 +1,4 @@
-from smbus2 import SMBus
+from smbus2 import SMBus, i2c_msg
 from time import sleep
 
 
@@ -9,6 +9,8 @@ class Tof:
 
     def read_version(self):
         paket = [0x00, 0x43, 0x00, 0x00, 0x00, 0x00, 0x55, 0x10, 0xCD, 0x9A]
-        self.buss.write_i2c_block_data(self.address, 0, paket, True)
-        sleep(0.1)
-        print(self.buss.read_i2c_block_data(self.address, 0, 12, True))
+        write = i2c_msg.write(self.address, paket)
+        read = i2c_msg.read(self.address, 12)
+        self.buss.i2c_rdwr(write, read)
+        data = list(read)
+        print(data)
