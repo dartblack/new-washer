@@ -8,7 +8,7 @@ class Tof:
         self.buss = SMBus(1, True)
 
     def read_version(self):
-        paket = [0x43, 0x00, 0x00, 0x00, 0x00, 0x55, 0x10, 0xCD, 0x9A]
+        paket = [0xE0, 0x01, 0x00, 0x00, 0x00, 0x66, 0x25, 0x46, 0x93]
         write = i2c_msg.write(self.address, paket)
         read = i2c_msg.read(self.address, 12)
         self.buss.i2c_rdwr(write, read)
