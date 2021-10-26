@@ -6,3 +6,4 @@ from libs.tof import Tof
 
 sensor = Tof()
 sensor.init_sensors()
+sensor.read_data()
