@@ -12,4 +12,4 @@ class Tof:
         for i in paket:
             self.buss.write_byte_data(self.address, 0xF5, i)
         sleep(0.2)
-        print(self.buss.read_block_data(self.address, 0xFA))
+        print(self.buss.read_i2c_block_data(self.address, 0xFA, 11))
