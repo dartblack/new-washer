@@ -8,6 +8,6 @@ class Tof:
         self.buss = smbus2.SMBus(1)
 
     def read_version(self):
-        self.buss.write_block_data(self.address, 0, [0xF5, 0x43, 0x00, 0x00, 0x00, 0x00, 0xAC, 0x45, 0x62, 0x3B])
-        sleep(1)
+        self.buss.write_block_data(self.address, 0, list([0xF5, 0x43, 0x00, 0x00, 0x00, 0x00, 0xAC, 0x45, 0x62, 0x3B]))
+        sleep(0.2)
         print(self.buss.read_block_data(self.address, 0))
