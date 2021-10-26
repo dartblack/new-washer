@@ -12,5 +12,4 @@ class Tof:
         for byte in paket:
             self.buss.write_byte(self.address, byte)
         sleep(0.2)
-        print(self.buss.read_block_data(self.address, 0))
-        list().insert(0, 0x00)
+        print(self.buss.read_byte(self.address))
