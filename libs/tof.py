@@ -9,6 +9,6 @@ class Tof:
 
     def read_version(self):
         paket = [0x00, 0x43, 0x00, 0x00, 0x00, 0x00, 0x55, 0x10, 0xCD, 0x9A]
-        self.buss.write_i2c_block_data(self.address, 0x00, paket, True)
+        self.buss.write_i2c_block_data(self.address, 0, paket, True)
         sleep(0.1)
-        print(self.buss.read_i2c_block_data(self.address, 0x00, 12, True))
+        print(self.buss.read_i2c_block_data(self.address, 0, 12, True))
