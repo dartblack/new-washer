@@ -28,11 +28,11 @@ class Tof:
         self.buss = SMBus(1, True)
 
     def read_version(self):
-        head = i2c_msg(self.address, 0x00)
-        command = i2c_msg(self.address, 0x43)
-        data = i2c_msg(self.address, 0x00, 0x00, 0x00, 0x00)
-        crc = i2c_msg(self.address, calculate_crc32(data))
-        response = i2c_msg(self.address, 0x01)
+        head = i2c_msg.write(self.address, [0x00])
+        command = i2c_msg.write(self.address, [0x43])
+        data = i2c_msg.write(self.address, [0x00, 0x00, 0x00, 0x00])
+        crc = i2c_msg.write(self.address, calculate_crc32(data))
+        response = i2c_msg.read(self.address, 0x01)
         self.buss.i2c_rdwr(head, command, data, crc, response)
         print(list(response))
 
