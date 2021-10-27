@@ -6,3 +6,4 @@ from libs.tof import Tof
 
 sensor = Tof()
 sensor.read_version()
+sensor.read_distance()
