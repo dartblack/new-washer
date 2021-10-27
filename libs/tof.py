@@ -35,11 +35,10 @@ class Tof:
         print(list(response))
 
     def read_distance(self):
-        head = 0x00
-        command = 0xE0
-        paket = [0x00, 0xE0, 0x01, 0x00, 0x00, 0x00, 0x66, 0x25, 0x46, 0x93]
-        data = i2c_msg.write(self.address, paket)
-        read = i2c_msg.read(self.address, 12)
-        self.buss.i2c_rdwr(data, read)
-        read_data = list(read)
-        print(read_data)
+        head = i2c_msg.write(self.address, [0x00])
+        command = i2c_msg.write(self.address, [0xE0])
+        data = i2c_msg.write(self.address, [0x01, 0x00, 0x00, 0x00])
+        crc = i2c_msg.write(self.address, [0x66, 0x25, 0x46, 0x93])
+        response = i2c_msg.read(self.address, 0x01)
+        self.buss.i2c_rdwr(head, command, data, crc, response)
+        print(list(response))
