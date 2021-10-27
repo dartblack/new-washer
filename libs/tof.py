@@ -18,7 +18,7 @@ def calculate_crc32(dataPtr):
     crc = 0xFFFFFFFF
     for i in dataPtr:
         crc = calculate_crc32_byte(crc, dataPtr[i])
-        print(crc)
+        print(bytearray(crc))
     return crc ^ 0
 
 
