@@ -1,6 +1,5 @@
 from smbus2 import SMBus, i2c_msg
-from time import sleep
-from binascii import unhexlify
+import sys
 
 
 def calculate_crc32_byte(crc, dataPtr):
@@ -19,7 +18,7 @@ def calculate_crc32(dataPtr):
     crc = 0xFFFFFFFF
     for i in dataPtr:
         crc = calculate_crc32_byte(crc, dataPtr[i])
-        print(crc.to_bytes())
+        print(crc.to_bytes(4, sys.byteorder))
     return crc ^ 0
 
 
