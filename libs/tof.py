@@ -26,11 +26,9 @@ class Tof:
         self.buss = SMBus(1, True)
 
     def read_version(self):
-        command = i2c_msg.write(self.address, [0x43])
-        data = i2c_msg.write(self.address, [0x00, 0x00, 0x00, 0x00])
-        crc = i2c_msg.write(self.address, [0x55, 0x10, 0xCD, 0x9A])
+        data = i2c_msg.write(self.address, [0x43, 0x00, 0x00, 0x00, 0x00, 0x55, 0x10, 0xCD, 0x9A])
         response = i2c_msg.read(self.address, 8)
-        self.buss.i2c_rdwr(command, data, crc, response)
+        self.buss.i2c_rdwr(data, response)
         print(list(response))
 
     def read_distance(self):
