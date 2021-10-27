@@ -74,7 +74,7 @@ class TFMiniPlus:
 
     # end read_block_data
 
-    def get_reading(self):
+    def get_reading_version(self):
 
         # get the first timestamp
         ts1 = time.time()
@@ -84,7 +84,7 @@ class TFMiniPlus:
             block = list()
 
             # returns a dictionary with the reading data
-            COMMAND = [0x5A, 0x05, 0x00, 0x01, 0x60]
+            COMMAND = [0x43, 0x00, 0x00, 0x00, 0x00]
 
             # writes the command block to the device,
             # expecting the reading back
@@ -98,7 +98,7 @@ class TFMiniPlus:
                 byte = self.read()
                 block.insert(a_byte, byte)
             # end for
-
+            print(block)
             # check the headers
             if block[0] == 0x59 and block[1] == 0x59:
                 # print("printing python3 compatible part")
