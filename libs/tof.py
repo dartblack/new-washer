@@ -31,7 +31,7 @@ class Tof:
         head = i2c_msg.write(self.address, [0x00])
         command = i2c_msg.write(self.address, [0x43])
         data = i2c_msg.write(self.address, [0x00, 0x00, 0x00, 0x00])
-        crc = i2c_msg.write(self.address, calculate_crc32(data))
+        crc = i2c_msg.write(self.address, calculate_crc32([0x00, 0x00, 0x00, 0x00]))
         response = i2c_msg.read(self.address, 0x01)
         self.buss.i2c_rdwr(head, command, data, crc, response)
         print(list(response))
