@@ -1,8 +1,7 @@
 from smbus2 import SMBus, i2c_msg
-import sys
 
 
-def calculate_crc32_byte(crc: int, dataPtr: Byte):
+def calculate_crc32_byte(crc: int, dataPtr: int):
     crc_uint32 = crc
     data_uint32 = dataPtr
     crc_uint32 = crc_uint32 ^ (data_uint32 << 24)
