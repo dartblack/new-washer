@@ -3,16 +3,6 @@ from time import sleep
 from binascii import unhexlify
 
 
-def long_to_bytes(val, endianness='little'):
-    width = val.bit_length()
-    width += 8 - ((width % 8) or 8)
-    fmt = '%%0%dx' % (width // 4)
-    s = unhexlify(fmt % val)
-    if endianness == 'little':
-        s = s[::-1]
-    return s
-
-
 def calculate_crc32_byte(crc, dataPtr):
     crc_uint32 = crc
     data_uint32 = dataPtr
@@ -29,7 +19,7 @@ def calculate_crc32(dataPtr):
     crc = 0xFFFFFFFF
     for i in dataPtr:
         crc = calculate_crc32_byte(crc, dataPtr[i])
-        print(long_to_bytes(crc))
+        print(unhexlify(crc))
     return crc ^ 0
 
 
