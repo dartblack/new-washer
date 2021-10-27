@@ -2,7 +2,7 @@ from smbus2 import SMBus, i2c_msg
 import sys
 
 
-def calculate_crc32_byte(crc, dataPtr):
+def calculate_crc32_byte(crc: int, dataPtr: Byte):
     crc_uint32 = crc
     data_uint32 = dataPtr
     crc_uint32 = crc_uint32 ^ (data_uint32 << 24)
@@ -18,7 +18,6 @@ def calculate_crc32(dataPtr):
     crc = 0xFFFFFFFF
     for i in dataPtr:
         crc = calculate_crc32_byte(crc, dataPtr[i])
-        print(crc.to_bytes(4, sys.byteorder))
     return crc ^ 0
 
 
@@ -31,7 +30,7 @@ class Tof:
         head = i2c_msg.write(self.address, [0x00])
         command = i2c_msg.write(self.address, [0x43])
         data = i2c_msg.write(self.address, [0x00, 0x00, 0x00, 0x00])
-        crc = i2c_msg.write(self.address, calculate_crc32([0x00, 0x00, 0x00, 0x00]))
+        crc = i2c_msg.write(self.address, [0x55, 0x10, 0xCD, 0x9A])
         response = i2c_msg.read(self.address, 0x01)
         self.buss.i2c_rdwr(head, command, data, crc, response)
         print(list(response))
