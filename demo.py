@@ -1,8 +1,5 @@
-from libs.tof import TFMiniPlus
+from libs.sensor import Sensor
 
-# sensor = Sensor()
-# print("get distance info")
-# print(sensor.get_TFmini_data())
-
-sensor = TFMiniPlus()
-sensor.get_reading_version()
+sensor = Sensor()
+sensor.init_sensors()
+print(sensor.get_tof_distances())

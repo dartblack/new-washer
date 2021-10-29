@@ -2,6 +2,7 @@ from libs.config import ConfigLoader
 import json
 import time
 import serial
+import math
 from gpiozero import DigitalOutputDevice
 from gpiozero import DigitalInputDevice
 
@@ -56,28 +57,28 @@ class Sensor(ConfigLoader):
                 value = temp
         return value
 
-    def lasers_info(self):
+    def get_tof_distances(self):
+        mini = 0
+        lidar07 = 0
         self.port = serial.Serial("/dev/rfcomm0", baudrate=9600)
         if not self.port.is_open:
             self.port.open()
-        while True:
-            data = self.port.readline()
-            if data:
-                self.port.close()
-                return json.loads(data.decode())
 
-    def get_TFmini_data(self):
-        self.port = serial.Serial("/dev/ttyAMA0", 115200)
-        if not self.port.is_open:
-            self.port.open()
-        distance = 0
-        count = self.port.in_waiting
-        print(count)
-        if count > 8:
-            recv = self.port.read(9)
-            self.port.reset_input_buffer()
-            if recv[0] == 'Y' and recv[1] == 'Y':  # 0x59 is 'Y'
-                low = int(recv[2].encode('hex'), 16)
-                high = int(recv[3].encode('hex'), 16)
-                distance = low + high * 256
-        return distance
+        for i in range(0, 10):
+            while True:
+                data = self.port.readline()
+                if data:
+                    self.port.close()
+                try:
+                    data = json.loads(data.decode())
+                    if data['tfmini_distance'] > mini:
+                        mini = data['tfmini_distance']
+                    if data['lidar07_distance'] > lidar07:
+                        lidar07 = data['lidar07_distance']
+                except ValueError as e:
+                    break
+        return {
+            "hypotenuse_distance": mini,
+            "distance": math.sqrt(math.pow(mini, 2) / 2),
+            "motor_distance": lidar07
+        }
