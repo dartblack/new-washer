@@ -79,6 +79,6 @@ class Sensor(ConfigLoader):
                     break
         return {
             "hypotenuse_distance": mini,
-            "distance": math.sqrt(math.pow(mini, 2) / 2),
+            "distance": round(math.sqrt(math.pow(mini, 2) / 2)),
             "motor_distance": lidar07
         }
