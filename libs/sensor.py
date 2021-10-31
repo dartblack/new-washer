@@ -1,8 +1,7 @@
+import requests
+
 from libs.config import ConfigLoader
-import json
 import time
-import serial
-import math
 from gpiozero import DigitalOutputDevice
 from gpiozero import DigitalInputDevice
 
@@ -57,28 +56,16 @@ class Sensor(ConfigLoader):
                 value = temp
         return value
 
-    def get_tof_distances(self):
-        mini = 0
-        lidar07 = 0
-        self.port = serial.Serial("/dev/rfcomm0", baudrate=9600)
-        if not self.port.is_open:
-            self.port.open()
+    def get_back_distances(self):
+        response = requests.get('http:/' + self.data['DISTANCE_SENSOR_IP'] + '/distance')
+        if response.status_code != 200:
+            return 0
+        data = response.json()
+        return data['distance']
 
-        for i in range(0, 10):
-            while True:
-                data = self.port.readline()
-                if data:
-                    self.port.close()
-                try:
-                    data = json.loads(data.decode())
-                    if data['tfmini_distance'] > mini:
-                        mini = data['tfmini_distance']
-                    if data['lidar07_distance'] > lidar07:
-                        lidar07 = data['lidar07_distance']
-                except ValueError as e:
-                    break
-        return {
-            "hypotenuse_distance": mini,
-            "distance": round(math.sqrt(math.pow(mini, 2) / 2)),
-            "motor_distance": lidar07
-        }
+    def get_top_distances(self):
+        response = requests.get('http:/' + self.data['TOP_SENSOR_IP'] + '/distance')
+        if response.status_code != 200:
+            return 0
+        data = response.json()
+        return data['distance']

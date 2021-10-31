@@ -30,6 +30,7 @@
     "TRIG_PIN": "4",
     "LEFT_ECHO": "17",
     "RIGHT_ECHO": "18",
-    "LASER_DISTANCE": 30
+    "TOP_SENSOR_IP": "169.168.1.3",
+    "DISTANCE_SENSOR_IP": "169.168.1.5"
   }
 }
