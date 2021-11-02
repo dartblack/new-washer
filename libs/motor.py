@@ -60,3 +60,7 @@ class Motor(ConfigLoader):
                 count = count + 1
         if self.debug:
             print("PULSE COUNT:" + str(count))
+
+    def sm_control(self, dir, sm=1, delay=None):
+        duration = sm * self.motor_config["SM_PULSE"]
+        self.control(dir, duration, delay)
