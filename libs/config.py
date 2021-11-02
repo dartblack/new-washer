@@ -17,3 +17,6 @@ class ConfigLoader:
 
     def get_data(self):
         return self.data
+
+    def dump_config(self):
+        print(self.get_data())
