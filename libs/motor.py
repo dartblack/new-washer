@@ -1,6 +1,6 @@
 from libs.config import ConfigLoader
 from time import sleep
-from gpiozero import DigitalOutputDevice
+from gpiozero import DigitalOutputDevice, DigitalInputDevice
 
 
 class Motor(ConfigLoader):
@@ -9,6 +9,7 @@ class Motor(ConfigLoader):
     PL = None
     DR2 = None
     debug = False
+    safe_sensors = None
 
     def __init__(self):
         ConfigLoader.__init__(self)
@@ -21,6 +22,11 @@ class Motor(ConfigLoader):
         self.PL = DigitalOutputDevice(self.motor_config["PL_PIN"])
         if "DIR_PIN2" in self.motor_config:
             self.DR2 = DigitalOutputDevice(self.motor_config["DIR_PIN2"])
+        if "SAFE_SENSOR_PINS" in self.motor_config:
+            self.safe_sensors = {
+                "1": DigitalInputDevice(self.motor_config["SAFE_SENSOR_PINS"]["1"]),
+                "2": DigitalInputDevice(self.motor_config["SAFE_SENSOR_PINS"]["2"])
+            }
 
     def set_debug(self, debug):
         self.debug = debug
@@ -49,8 +55,8 @@ class Motor(ConfigLoader):
         count = 0
         self.direction(dir)
         for i in range(duration):
-            self.move(delay)
-            count = count + 1
-        self.PL.off()
+            if self.safe_sensors[dir].value == 0:
+                self.move(delay)
+                count = count + 1
         if self.debug:
             print("PULSE COUNT:" + str(count))

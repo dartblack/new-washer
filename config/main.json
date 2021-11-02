@@ -10,21 +10,33 @@
     "DIR_PIN2": "19",
     "PL_PIN": "5",
     "PULSE_DELAY": 0.001,
-    "SM_PULSE": 1000
+    "SM_PULSE": 1000,
+    "SAFE_SENSOR_PINS": {
+      "1": "15",
+      "2": "16"
+    }
   },
   "side_motor": {
     "DIR_PIN": "21",
     "PL_PIN": "20",
     "PULSE_DELAY": 0.001,
     "SM_PULSE": 1000,
-    "MAX_PULSE_COUNT": 7100
+    "MAX_PULSE_COUNT": 7100,
+    "SAFE_SENSOR_PINS": {
+      "1": "15",
+      "2": "16"
+    }
   },
   "round_motor": {
     "DIR_PIN": "16",
     "PL_PIN": "12",
     "PULSE_DELAY": 0.001,
     "SM_PULSE": 1000,
-    "RADIUS": 40
+    "RADIUS": 40,
+    "SAFE_SENSOR_PINS": {
+      "1": "15",
+      "2": "16"
+    }
   },
   "sensors": {
     "TRIG_PIN": "4",
