@@ -19,7 +19,7 @@ round_motor.set_debug(True)
 
 #for i in range(10):
 #    main_motor.control(1 + (i%2), 200000, 0.001)
-main_motor.control(2, 10000, 0.001)
+main_motor.control(1, 10000, 0.001)
 exit()
 v = 0.002
 for x in range(50):
