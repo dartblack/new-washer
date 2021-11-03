@@ -8,14 +8,14 @@ main_motor.set_debug(False)
 
 side_motor = Motor()
 side_motor.init_motor('side_motor')
-side_motor.set_debug(True)
+side_motor.set_debug(False)
 
 round_motor = Motor()
 round_motor.init_motor('round_motor')
-round_motor.set_debug(True)
+round_motor.set_debug(False)
 #round_motor.control(1, 400, 0.002)
-#side_motor.control(2, 7100, 0.001)
-#exit(0)
+side_motor.control(2, 7100, 0.001)
+exit(0)
 
 #for i in range(10):
 #    main_motor.control(1 + (i%2), 200000, 0.001)
