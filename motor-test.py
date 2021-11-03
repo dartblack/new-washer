@@ -14,7 +14,7 @@ round_motor = Motor()
 round_motor.init_motor('round_motor')
 round_motor.set_debug(False)
 #round_motor.control(1, 400, 0.002)
-side_motor.control(1, 7100, 0.001)
+side_motor.control(1, 100, 0.001)
 exit(0)
 
 #for i in range(10):
