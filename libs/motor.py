@@ -55,9 +55,8 @@ class Motor(ConfigLoader):
         count = 0
         self.direction(dir)
         for i in range(duration):
-            if self.safe_sensors[dir].value == 0:
-                self.move(delay)
-                count = count + 1
+            self.move(delay)
+            count = count + 1
         if self.debug:
             print("PULSE COUNT:" + str(count))
 
