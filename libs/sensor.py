@@ -1,4 +1,6 @@
 import requests
+import statistics
+import math
 
 from libs.config import ConfigLoader
 import time
@@ -64,7 +66,9 @@ class Sensor(ConfigLoader):
         if response.status_code != 200:
             return 0
         data = response.json()
-        return data['distance']
+        d = statistics.mean(data['distance'])
+        dis = math.sqrt(math.pow(d, 2) / 2)
+        return d
 
     def get_top_distances(self):
         response = requests.get('http://' + self.data['TOP_SENSOR_IP'] + '/distance', {
@@ -74,4 +78,5 @@ class Sensor(ConfigLoader):
         if response.status_code != 200:
             return 0
         data = response.json()
-        return data['distance']
+        d = statistics.mean(data['distance'])
+        return d
