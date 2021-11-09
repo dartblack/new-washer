@@ -66,7 +66,7 @@ class Sensor(ConfigLoader):
         if response.status_code != 200:
             return 0
         data = response.json()
-        d = statistics.mean(data['distance'])
+        d = statistics.mean(data['distance']) / 10
         dis = math.sqrt(math.pow(d, 2) / 2)
         return dis
 
