@@ -5,3 +5,4 @@ sensor.init_sensors()
 
 # print(sensor.get_back_distances())
 print(sensor.get_left_distance())
+print(sensor.get_right_distance())
