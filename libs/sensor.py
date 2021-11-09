@@ -67,7 +67,7 @@ class Sensor(ConfigLoader):
             return 0
         data = response.json()
         d = statistics.mean(data['distance']) / 10
-        dis = math.sqrt(math.pow(d, 2) / 2)
+        dis = round(math.sqrt(math.pow(d, 2) / 2))
         return dis
 
     def get_top_distances(self):
