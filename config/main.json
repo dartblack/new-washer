@@ -10,7 +10,7 @@
     "DIR_PIN2": "19",
     "PL_PIN": "5",
     "PULSE_DELAY": 0.001,
-    "SM_PULSE": 1000,
+    "SM_PULSE": 88,
     "SAFE_SENSOR_PINS": {
       "1": "26",
       "2": "27"
@@ -20,7 +20,7 @@
     "DIR_PIN": "21",
     "PL_PIN": "20",
     "PULSE_DELAY": 0.001,
-    "SM_PULSE": 1000,
+    "SM_PULSE": 88,
     "MAX_PULSE_COUNT": 7100,
     "SAFE_SENSOR_PINS": {
       "1": "22",
