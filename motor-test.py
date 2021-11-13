@@ -14,7 +14,7 @@ side_motor.set_debug(False)
 round_motor = Motor()
 round_motor.init_motor('round_motor')
 round_motor.set_debug(False)
-round_motor.control(2, 400, 0.0025)
+main_motor.sm_control(1, 100)
 # side_motor.control(1, 100, 0.001)
 exit(0)
 
