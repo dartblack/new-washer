@@ -66,11 +66,7 @@ class Sensor(ConfigLoader):
         if response.status_code != 200:
             return 0
         data = response.json()
-        arr = []
-        for k, i in data['distance']:
-            if k > 5:
-                arr.insert(k, i)
-        d = statistics.mean(arr) / 10
+        d = statistics.median_high(data['distance']) / 10
         dis = round(math.sqrt(math.pow(d, 2) / 2))
         return dis
 
@@ -82,9 +78,5 @@ class Sensor(ConfigLoader):
         if response.status_code != 200:
             return 0
         data = response.json()
-        arr = []
-        for k, i in data['distance']:
-            if k > 5:
-                arr.insert(k, i)
-        d = statistics.mean(arr)
+        d = statistics.median_high(data['distance'])
         return d
