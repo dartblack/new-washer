@@ -54,7 +54,7 @@ class Motor(ConfigLoader):
             delay = self.motor_config["PULSE_DELAY"]
         count = 0
         self.direction(direction)
-        for i in range(duration):
+        for i in range(round(duration)):
             self.move(delay)
             count = count + 1
         if self.debug:
