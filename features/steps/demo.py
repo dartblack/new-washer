@@ -52,7 +52,7 @@ def step_move_side_motor(context, direction):
 @then('I move round motor dir "{direction}"')
 def step_move_round_motor(context, direction):
     move = round_motor.motor_config['SM_PULSE']
-    round_motor.sm_control(direction, move)
+    round_motor.control(direction, move)
 
 
 @then('I move main motor dir "{direction}"')
