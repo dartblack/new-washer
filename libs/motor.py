@@ -31,12 +31,12 @@ class Motor(ConfigLoader):
     def set_debug(self, debug):
         self.debug = debug
 
-    def direction(self, dir):
-        if dir == 1:
+    def direction(self, direction):
+        if direction == 1:
             self.DR.on()
             if self.DR2 is not None:
                 self.DR2.off()
-        elif dir == 2:
+        elif direction == 2:
             self.DR.off()
             if self.DR2 is not None:
                 self.DR2.on()
@@ -49,17 +49,17 @@ class Motor(ConfigLoader):
         self.PL.off()
         sleep(delay)
 
-    def control(self, dir, duration=10, delay=None):
+    def control(self, direction, duration=10, delay=None):
         if delay is None:
             delay = self.motor_config["PULSE_DELAY"]
         count = 0
-        self.direction(dir)
+        self.direction(direction)
         for i in range(duration):
             self.move(delay)
             count = count + 1
         if self.debug:
             print("PULSE COUNT:" + str(count))
 
-    def sm_control(self, dir, sm=1, delay=None):
+    def sm_control(self, direction, sm=1, delay=None):
         duration = sm * self.motor_config["SM_PULSE"]
-        self.control(dir, duration, delay)
+        self.control(direction, duration, delay)
