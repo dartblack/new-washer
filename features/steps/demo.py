@@ -13,9 +13,11 @@ print(left_distance, right_distance, back_distance)
 
 main_motor = Motor()
 main_motor.init_motor("main_motor")
+main_motor.set_debug(True)
 
 side_motor = Motor()
 side_motor.init_motor('side_motor')
+side_motor.set_debug(True)
 
 round_motor = Motor()
 round_motor.init_motor('round_motor')

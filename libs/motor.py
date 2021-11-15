@@ -62,4 +62,6 @@ class Motor(ConfigLoader):
 
     def sm_control(self, direction, sm=1, delay=None):
         duration = sm * self.motor_config["SM_PULSE"]
+        if self.debug:
+            print(direction, sm, duration)
         self.control(direction, duration, delay)
