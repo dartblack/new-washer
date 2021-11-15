@@ -42,6 +42,7 @@ def step_start_positions(context):
 
 @then('I move side motor dir "{direction}"')
 def step_move_side_motor(context, direction):
+    direction = int(direction)
     if direction == 1:
         move = side_move - left_distance
     else:
@@ -52,6 +53,7 @@ def step_move_side_motor(context, direction):
 
 @then('I move round motor dir "{direction}"')
 def step_move_round_motor(context, direction):
+    direction = int(direction)
     move = round_motor.motor_config['SM_PULSE']
     round_motor.control(direction, move)
     assert 1 == 1
@@ -59,6 +61,7 @@ def step_move_round_motor(context, direction):
 
 @then('I move main motor dir "{direction}"')
 def step_move_main_motor(context, direction):
+    direction = int(direction)
     move = main_move - back_distance
     main_motor.sm_control(direction, move)
     assert 1 == 1
@@ -66,6 +69,7 @@ def step_move_main_motor(context, direction):
 
 @then('I correct main motor dir "{direction}"')
 def step_correct_main_motor(context, direction):
+    direction = int(direction)
     diff = 0
     move = main_move - back_distance
     top = sensors.get_top_distances()
