@@ -5,9 +5,9 @@ from libs.motor import Motor
 use_step_matcher("parse")
 sensors = Sensor()
 sensors.init_sensors()
-left_distance = sensors.get_left_distance()
-right_distance = sensors.get_right_distance()
-back_distance = sensors.get_back_distances()
+left_distance = 30
+right_distance = 30
+back_distance = 300
 
 print(left_distance, right_distance, back_distance)
 

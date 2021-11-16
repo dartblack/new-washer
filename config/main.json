@@ -1,7 +1,7 @@
 {
   "construct": {
     "X_WIDTH": 300,
-    "Y_WIDTH": 900,
+    "Y_WIDTH": 700,
     "START_LINE": 80,
     "SIDE_START_LINE": 70
   },
@@ -9,7 +9,7 @@
     "DIR_PIN": "6",
     "DIR_PIN2": "19",
     "PL_PIN": "5",
-    "PULSE_DELAY": 0.001,
+    "PULSE_DELAY": 0.0005,
     "SM_PULSE": 88,
     "SAFE_SENSOR_PINS": {
       "1": "26",
