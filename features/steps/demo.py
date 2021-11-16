@@ -7,7 +7,7 @@ sensors = Sensor()
 sensors.init_sensors()
 left_distance = 30
 right_distance = 30
-back_distance = 300
+back_distance = 200
 
 print(left_distance, right_distance, back_distance)
 
