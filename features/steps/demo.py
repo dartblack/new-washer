@@ -74,10 +74,10 @@ def step_correct_main_motor(context, direction):
     direction = int(direction)
     diff = 0
     move = main_move - back_distance
-    top = sensors.get_top_distances()
+    top = sensors.get_top_distances() - 30
     if move > top and direction == 1:
         diff = move - top
     if direction == 2:
-        diff = main_move - move - top
+        diff = top - construct_config['START_LINE']
     main_motor.sm_control(direction, diff)
     assert 1 == 1
