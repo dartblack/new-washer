@@ -78,6 +78,6 @@ def step_correct_main_motor(context, direction):
     if move > top and direction == 1:
         diff = move - top
     if direction == 2:
-        diff = top - construct_config['START_LINE']
+        diff = main_move - move + top
     main_motor.sm_control(direction, diff)
     assert 1 == 1

@@ -9,8 +9,8 @@
     "DIR_PIN": "6",
     "DIR_PIN2": "19",
     "PL_PIN": "5",
-    "PULSE_DELAY": 0.0005,
-    "SM_PULSE": 94,
+    "PULSE_DELAY": 0.0007,
+    "SM_PULSE": 95,
     "SAFE_SENSOR_PINS": {
       "1": "26",
       "2": "27"
@@ -30,8 +30,8 @@
   "round_motor": {
     "DIR_PIN": "16",
     "PL_PIN": "12",
-    "PULSE_DELAY": 0.002,
-    "SM_PULSE": 450,
+    "PULSE_DELAY": 0.003,
+    "SM_PULSE": 400,
     "RADIUS": 40,
     "SAFE_SENSOR_PINS": {
       "1": "24",
