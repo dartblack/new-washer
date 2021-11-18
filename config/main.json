@@ -31,7 +31,7 @@
     "DIR_PIN": "16",
     "PL_PIN": "12",
     "PULSE_DELAY": 0.002,
-    "SM_PULSE": 500,
+    "SM_PULSE": 450,
     "RADIUS": 40,
     "SAFE_SENSOR_PINS": {
       "1": "24",
