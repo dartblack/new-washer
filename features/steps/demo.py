@@ -74,7 +74,7 @@ def step_correct_main_motor(context, direction):
     direction = int(direction)
     diff = 0
     move = main_move - back_distance
-    top = sensors.get_top_distances() - 30
+    top = sensors.get_top_distances() - 25
     if move > top and direction == 1:
         diff = move - top
     if direction == 2:
