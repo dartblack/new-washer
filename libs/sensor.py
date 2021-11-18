@@ -60,7 +60,7 @@ class Sensor(ConfigLoader):
 
     def get_back_distances(self):
         response = requests.get('http://' + self.data['DISTANCE_SENSOR_IP'] + '/distance', {
-            'count': 30,
+            'count': 60,
             'delay': 50
         })
         if response.status_code != 200:
@@ -72,7 +72,7 @@ class Sensor(ConfigLoader):
 
     def get_top_distances(self):
         response = requests.get('http://' + self.data['TOP_SENSOR_IP'] + '/distance', {
-            'count': 30,
+            'count': 60,
             'delay': 50
         })
         if response.status_code != 200:
