@@ -11,6 +11,7 @@
     "PL_PIN": "5",
     "PULSE_DELAY": 0.0007,
     "SM_PULSE": 110,
+    "ACE_COUNT": 3000,
     "SAFE_SENSOR_PINS": {
       "1": "26",
       "2": "27"
