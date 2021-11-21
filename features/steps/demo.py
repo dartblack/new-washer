@@ -65,7 +65,7 @@ def step_move_round_motor(context, direction):
 def step_move_main_motor(context, direction):
     direction = int(direction)
     move = main_move - back_distance
-    main_motor.sm_control(direction, move)
+    main_motor.sm_control(direction, move, True)
     assert 1 == 1
 
 
@@ -79,5 +79,5 @@ def step_correct_main_motor(context, direction):
         diff = move - top
     if direction == 2:
         diff = top
-    main_motor.sm_control(direction, diff)
+    main_motor.sm_control(direction, diff, True)
     assert 1 == 1
