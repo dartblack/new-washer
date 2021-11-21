@@ -65,6 +65,10 @@ class Motor(ConfigLoader):
             delay = self.motor_config["PULSE_DELAY"]
         count = 0
         self.direction(direction)
+
+        if duration < self.motor_config["ACE_COUNT"]:
+            self.motor_config["ACE_COUNT"] = duration
+
         start_delay = 0.001
         coef = start_delay / self.motor_config["ACE_COUNT"]
         for i in range(self.motor_config["ACE_COUNT"]):
@@ -76,7 +80,7 @@ class Motor(ConfigLoader):
             self.move(delay)
             count = count + 1
 
-        for i in range(self.motor_config["ACE_COUNT"]):
+        for i in range(duration - count):
             self.move(start_delay)
             start_delay = start_delay + coef
             count = count + 1
