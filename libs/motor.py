@@ -60,8 +60,28 @@ class Motor(ConfigLoader):
         if self.debug:
             print("PULSE COUNT:" + str(count))
 
-    def sm_control(self, direction, sm=1, delay=None):
+    def control_ace(self, direction, duration=10, delay=None):
+        if delay is None:
+            delay = self.motor_config["PULSE_DELAY"]
+        count = 0
+        self.direction(direction)
+        start_delay = 0.001
+        for i in range(2000):
+            self.move(start_delay)
+            start_delay = start_delay + delay
+            count = count + 1
+
+        for i in range(round(duration) - 2000):
+            self.move(delay)
+            count = count + 1
+        if self.debug:
+            print("PULSE COUNT:" + str(count))
+
+    def sm_control(self, direction, sm=1, ace=False, delay=None):
         duration = sm * self.motor_config["SM_PULSE"]
         if self.debug:
             print(direction, sm, duration)
-        self.control(direction, duration, delay)
+        if ace:
+            self.control_ace(direction, duration, delay)
+        else:
+            self.control(direction, duration, delay)
