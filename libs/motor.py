@@ -78,7 +78,7 @@ class Motor(ConfigLoader):
 
         for i in range(self.motor_config["ACE_COUNT"]):
             self.move(start_delay)
-            start_delay = start_delay - coef
+            start_delay = start_delay + coef
             count = count + 1
 
         if self.debug:
