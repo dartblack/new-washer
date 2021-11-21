@@ -9,7 +9,7 @@
     "DIR_PIN": "6",
     "DIR_PIN2": "19",
     "PL_PIN": "5",
-    "PULSE_DELAY": 0.0001,
+    "PULSE_DELAY": 0.0003,
     "SM_PULSE": 115,
     "ACE_COUNT": 3000,
     "SAFE_SENSOR_PINS": {
