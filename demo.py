@@ -1,8 +1,10 @@
-from libs.sensor import Sensor
+from libs.relay import Relay
+from time import sleep
 
-sensor = Sensor()
-sensor.init_sensors()
+relay = Relay()
 
-# print(sensor.get_back_distances())
-print(sensor.get_left_distance())
-print(sensor.get_right_distance())
+relay.turn_on_hair_dryer()
+relay.turn_on_water()
+sleep(5)
+relay.turn_off_hair_dryer()
+relay.turn_off_water()

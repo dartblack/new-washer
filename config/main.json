@@ -47,11 +47,11 @@
     "DISTANCE_SENSOR_IP": "192.168.1.4"
   },
   "relay": {
-    "WATER_PIN": "28",
+    "WATER_PIN": "23",
     "HAIR_DRYER": [
-      "29",
-      "30",
-      "31"
+      "27",
+      "22",
+      "24"
     ]
   }
 }
