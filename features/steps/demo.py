@@ -1,8 +1,10 @@
 from behave import *
 from libs.sensor import Sensor
 from libs.motor import Motor
+from libs.relay import Relay
 
 use_step_matcher("parse")
+relay = Relay()
 sensors = Sensor()
 sensors.init_sensors()
 left_distance = 30
@@ -81,3 +83,13 @@ def step_correct_main_motor(context, direction):
         diff = top
     main_motor.sm_control(direction, diff, True)
     assert 1 == 1
+
+
+@then('I turn on hair dryer')
+def turn_on_hair_dryer(context):
+    relay.turn_on_hair_dryer()
+
+
+@then('I turn off hair dryer')
+def turn_off_hair_dryer(context):
+    relay.turn_off_hair_dryer()
