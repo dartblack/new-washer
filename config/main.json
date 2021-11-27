@@ -18,7 +18,7 @@
     "PL_PIN": "20",
     "PULSE_DELAY": 0.0008,
     "SM_PULSE": 52,
-    "MAX_PULSE_COUNT": 7100
+    "MAX_PULSE_COUNT": 8200
   },
   "round_motor": {
     "DIR_PIN": "16",

@@ -51,7 +51,7 @@ def step_move_side_motor(context, direction):
         move = side_move - left_distance
     else:
         move = side_move - right_distance
-    side_motor.sm_control(direction, move)
+    side_motor.control(direction, 8200)
     assert 1 == 1
 
 
