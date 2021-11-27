@@ -24,7 +24,7 @@
     "DIR_PIN": "16",
     "PL_PIN": "12",
     "PULSE_DELAY": 0.003,
-    "SM_PULSE": 400,
+    "SM_PULSE": 405,
     "RADIUS": 40
   },
   "sensors": {
