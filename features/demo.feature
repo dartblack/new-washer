@@ -16,8 +16,6 @@ Feature: Demo
     Then I move main motor dir "2"
     Then I correct main motor dir "2"
     Then I move round motor dir "2"
-
-  Scenario: wash
     When I Start first position
     Then I move side motor dir "2"
     Then I move round motor dir "2"
@@ -29,8 +27,6 @@ Feature: Demo
     Then I move main motor dir "2"
     Then I correct main motor dir "2"
     Then I move round motor dir "2"
-
-  Scenario: feni
     When I Start first position
     Then I move round motor dir "1"
     Then I move main motor dir "1"

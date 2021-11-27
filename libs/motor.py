@@ -80,6 +80,7 @@ class Motor(ConfigLoader):
             self.move(delay)
             count = count + 1
 
+        start_delay = delay
         for i in range(duration - count):
             self.move(start_delay)
             start_delay = start_delay + coef

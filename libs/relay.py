@@ -1,5 +1,6 @@
 from libs.config import ConfigLoader
 from gpiozero import DigitalOutputDevice
+from gpiozero import LEDBoard
 
 
 class Relay(ConfigLoader):
@@ -9,9 +10,7 @@ class Relay(ConfigLoader):
         if self.data is None:
             raise ValueError("config is empty")
         self.water = DigitalOutputDevice(self.data["WATER_PIN"])
-        self.hair_dryer = []
-        for k, i in self.data["HAIR_DRYER"]:
-            self.hair_dryer.insert(int(k), DigitalOutputDevice(i))
+        self.hair_dryer = LEDBoard(self.data["HAIR_DRYER1"], self.data["HAIR_DRYER2"], self.data["HAIR_DRYER3"])
 
     def turn_on_water(self):
         self.water.on()
@@ -20,9 +19,7 @@ class Relay(ConfigLoader):
         self.water.off()
 
     def turn_on_hair_dryer(self):
-        for i in self.hair_dryer:
-            i.on()
+        self.hair_dryer.on()
 
     def turn_off_hair_dryer(self):
-        for i in self.hair_dryer:
-            i.off()
+        self.hair_dryer.off()

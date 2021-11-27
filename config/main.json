@@ -11,7 +11,7 @@
     "PL_PIN": "5",
     "PULSE_DELAY": 0.0003,
     "SM_PULSE": 115,
-    "ACE_COUNT": 3000,
+    "ACE_COUNT": 4000,
     "SAFE_SENSOR_PINS": {
       "1": "26",
       "2": "27"
@@ -20,7 +20,7 @@
   "side_motor": {
     "DIR_PIN": "21",
     "PL_PIN": "20",
-    "PULSE_DELAY": 0.001,
+    "PULSE_DELAY": 0.0008,
     "SM_PULSE": 52,
     "MAX_PULSE_COUNT": 7100,
     "SAFE_SENSOR_PINS": {
@@ -32,7 +32,7 @@
     "DIR_PIN": "16",
     "PL_PIN": "12",
     "PULSE_DELAY": 0.003,
-    "SM_PULSE": 400,
+    "SM_PULSE": 420,
     "RADIUS": 40,
     "SAFE_SENSOR_PINS": {
       "1": "24",
@@ -43,15 +43,13 @@
     "TRIG_PIN": "4",
     "LEFT_ECHO": "17",
     "RIGHT_ECHO": "18",
-    "TOP_SENSOR_IP": "192.168.1.5",
+    "TOP_SENSOR_IP": "192.168.1.6",
     "DISTANCE_SENSOR_IP": "192.168.1.4"
   },
   "relay": {
     "WATER_PIN": "23",
-    "HAIR_DRYER": [
-      "27",
-      "22",
-      "24"
-    ]
+    "HAIR_DRYER1": "27",
+    "HAIR_DRYER2": "22",
+    "HAIR_DRYER3": "24"
   }
 }
