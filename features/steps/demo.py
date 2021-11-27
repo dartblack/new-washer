@@ -93,3 +93,13 @@ def turn_on_hair_dryer(context):
 @then('I turn off hair dryer')
 def turn_off_hair_dryer(context):
     relay.turn_off_hair_dryer()
+
+
+@then('I turn on water')
+def turn_on_water(context):
+    relay.turn_on_water()
+
+
+@then('I turn off water')
+def turn_off_water(context):
+    relay.turn_off_water()
