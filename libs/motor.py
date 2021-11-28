@@ -55,6 +55,8 @@ class Motor(ConfigLoader):
         count = 0
         self.direction(direction)
         for i in range(round(duration)):
+            if self.safe_sensors is not None and self.safe_sensors[direction].value == 1:
+                break
             self.move(delay)
             count = count + 1
         if self.debug:
@@ -72,16 +74,22 @@ class Motor(ConfigLoader):
         start_delay = 0.001
         coef = start_delay / self.motor_config["ACE_COUNT"]
         for i in range(self.motor_config["ACE_COUNT"]):
+            if self.safe_sensors is not None and self.safe_sensors[direction].value == 1:
+                break
             self.move(start_delay)
             start_delay = start_delay - coef
             count = count + 1
 
         for i in range(round(duration) - self.motor_config["ACE_COUNT"] - self.motor_config["ACE_COUNT"]):
+            if self.safe_sensors is not None and self.safe_sensors[direction].value == 1:
+                break
             self.move(delay)
             count = count + 1
 
         start_delay = delay
         for i in range(duration - count):
+            if self.safe_sensors is not None and self.safe_sensors[direction].value == 1:
+                break
             self.move(start_delay)
             start_delay = start_delay + coef
             count = count + 1

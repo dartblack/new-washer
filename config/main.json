@@ -11,27 +11,39 @@
     "PL_PIN": "5",
     "PULSE_DELAY": 0.0002,
     "SM_PULSE": 115,
-    "ACE_COUNT": 4000
+    "ACE_COUNT": 4000,
+    "SAFE_SENSOR_PINS": {
+      "1": "26",
+      "2": "13"
+    }
   },
   "side_motor": {
     "DIR_PIN": "21",
     "PL_PIN": "20",
     "PULSE_DELAY": 0.0008,
     "SM_PULSE": 52,
-    "MAX_PULSE_COUNT": 8200
+    "MAX_PULSE_COUNT": 8200,
+    "SAFE_SENSOR_PINS": {
+      "1": "25",
+      "2": "17"
+    }
   },
   "round_motor": {
     "DIR_PIN": "16",
     "PL_PIN": "12",
     "PULSE_DELAY": 0.003,
     "SM_PULSE": 405,
-    "RADIUS": 40
+    "RADIUS": 40,
+    "SAFE_SENSOR_PINS": {
+      "1": "18",
+      "2": "17"
+    }
   },
   "sensors": {
     "TRIG_PIN": "4",
     "LEFT_ECHO": "17",
     "RIGHT_ECHO": "18",
-    "TOP_SENSOR_IP": "192.168.1.6",
+    "TOP_SENSOR_IP": "192.168.1.4",
     "DISTANCE_SENSOR_IP": "192.168.1.4"
   },
   "relay": {
