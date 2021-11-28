@@ -10,6 +10,7 @@ class Motor(ConfigLoader):
     DR2 = None
     debug = False
     safe_sensors = None
+    active_sensor = None
 
     def __init__(self):
         ConfigLoader.__init__(self)
@@ -33,10 +34,14 @@ class Motor(ConfigLoader):
 
     def direction(self, direction):
         if direction == 1:
+            if self.safe_sensors is not None:
+                self.active_sensor = self.safe_sensors["1"]
             self.DR.on()
             if self.DR2 is not None:
                 self.DR2.off()
         elif direction == 2:
+            if self.safe_sensors is not None:
+                self.active_sensor = self.safe_sensors["2"]
             self.DR.off()
             if self.DR2 is not None:
                 self.DR2.on()
@@ -55,7 +60,7 @@ class Motor(ConfigLoader):
         count = 0
         self.direction(direction)
         for i in range(round(duration)):
-            if self.safe_sensors is not None and self.safe_sensors[direction].value == 1:
+            if self.active_sensor is not None and self.active_sensor.value == 1:
                 break
             self.move(delay)
             count = count + 1
@@ -74,21 +79,21 @@ class Motor(ConfigLoader):
         start_delay = 0.001
         coef = start_delay / self.motor_config["ACE_COUNT"]
         for i in range(self.motor_config["ACE_COUNT"]):
-            if self.safe_sensors is not None and self.safe_sensors[direction].value == 1:
+            if self.active_sensor is not None and self.active_sensor.value == 1:
                 break
             self.move(start_delay)
             start_delay = start_delay - coef
             count = count + 1
 
         for i in range(round(duration) - self.motor_config["ACE_COUNT"] - self.motor_config["ACE_COUNT"]):
-            if self.safe_sensors is not None and self.safe_sensors[direction].value == 1:
+            if self.active_sensor is not None and self.active_sensor.value == 1:
                 break
             self.move(delay)
             count = count + 1
 
         start_delay = delay
         for i in range(duration - count):
-            if self.safe_sensors is not None and self.safe_sensors[direction].value == 1:
+            if self.active_sensor is not None and self.active_sensor.value == 1:
                 break
             self.move(start_delay)
             start_delay = start_delay + coef

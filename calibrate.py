@@ -12,6 +12,6 @@ distance = sensor.get_top_distances()
 print("Distance: " + str(distance))
 print("PULSE/SM: " + str(40000 / distance))
 
-main_motor.control_ace(2, 40000, 0.0001)
+main_motor.control_ace(2, 50000, 0.0001)
 distance = sensor.get_top_distances()
 print("Distance: " + str(distance))
