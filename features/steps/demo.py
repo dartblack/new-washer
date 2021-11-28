@@ -1,4 +1,5 @@
 from behave import *
+from time import sleep
 from libs.sensor import Sensor
 from libs.motor import Motor
 from libs.relay import Relay
@@ -59,9 +60,9 @@ def step_move_side_motor(context, direction):
 def step_move_round_motor(context, direction):
     direction = int(direction)
     round_motor.direction(direction)
-    for i in range(0, 100):
+    for i in range(0, 300):
         round_motor.move(round_motor.motor_config["PULSE_DELAY"])
-    move = round_motor.motor_config['SM_PULSE'] - 100
+    move = round_motor.motor_config['SM_PULSE'] - 300
     round_motor.control(direction, move)
     assert 1 == 1
 
@@ -101,6 +102,7 @@ def turn_off_hair_dryer(context):
 @then('I turn on water')
 def turn_on_water(context):
     relay.turn_on_water()
+    sleep(3)
 
 
 @then('I turn off water')
