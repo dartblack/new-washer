@@ -48,11 +48,8 @@ def step_start_positions(context):
 @then('I move side motor dir "{direction}"')
 def step_move_side_motor(context, direction):
     direction = int(direction)
-    if direction == 1:
-        move = side_move - left_distance
-    else:
-        move = side_move - right_distance
-    side_motor.control(direction, 8200)
+    move = 100000
+    side_motor.control(direction, move)
     assert 1 == 1
 
 
